@@ -1,6 +1,6 @@
 ########################################################################
 #
-#  getOpt -- similar as getopt(3)
+#  getOpt -- similar as getopt_long_only(3)
 #
 # (C) 2014 Jianhong Yin <yin-jianhong@163.com>
 #
@@ -72,7 +72,7 @@ proc ::getOpt::getOpt {optionList argvVar optVar optArgVar} {
 					"m" {
 						if [info exists _val] {
 							set optArg $_val
-						} elseif {[llength $argv] != 0 && 
+						} elseif {[llength $argv] != 0 &&
 							[lindex $argv 0] != "--"} {
 							set optArg [lindex $argv 0]
 							set argv [lrange $argv 1 end]
@@ -185,7 +185,7 @@ proc ::getOpt::getUsage {optList} {
 
 	#generate usage list
 	foreach key [dict keys $optDict] {
-		set pad 24
+		set pad 26
 		set keydesc $key
 		set argdesc ""
 		if [dict exist $optDict $key keys] {set keydesc [dict get $optDict $key keys]}
@@ -194,7 +194,10 @@ proc ::getOpt::getUsage {optList} {
 			"y" {set argdesc {<arg>}; set flag(y) yes}
 			"m" {set argdesc {{arg}}; set flag(m) yes}
 		}
-		set len [string length "-$keydesc $argdesc"]
+		set opt_length [string length "-$keydesc $argdesc"]
+
+		set keyhelp [dict get $optDict $key help]
+		set help_length [string length "-$keyhelp"]
 
 		# print options as GNU style:
 		# -o, --long-option	<abstract>
@@ -209,29 +212,28 @@ proc ::getOpt::getUsage {optList} {
 		}
 		set keydesc [join "$shortOpt $longOpt" ", "]
 
-		if {$len > $pad} {
-			puts [format "    %-${pad}s\n %${pad}s    %s" "$keydesc $argdesc" {} [dict get $optDict $key help]]
+		if {$opt_length > $pad-4 && $help_length > 8} {
+			puts [format "    %-${pad}s\n %${pad}s    %s" "$keydesc $argdesc" {} $keyhelp]
 		} else {
-			puts [format "    %-${pad}s %s" "$keydesc $argdesc" [dict get $optDict $key help]]
+			puts [format "    %-${pad}s %s" "$keydesc $argdesc" $keyhelp]
 		}
 	}
 
 	unset optDict
 
-	puts "\n    Comments:"
+	puts "\nComments:"
 	if [info exist flag] {
-		puts {    -  [arg] means arg is optional, need use --opt=arg to specify a arg}
+		puts {    *  [arg] means arg is optional, need use --opt=arg to specify an argument}
 		puts {       <arg> means arg is required, and -f a -f b will get the latest 'b'}
 		puts {       {arg} means arg is required, and -f a -f b will get a list 'a b'}
 
 		puts {}
-		puts {    -  if arg is required, '--opt arg' is same as '--opt=arg'}
+		puts {    *  if arg is required, '--opt arg' is same as '--opt=arg'}
 		puts {}
 	}
-	puts {    -  '-opt' will be treated as:}
+	puts {    *  '-opt' will be treated as:}
 	puts {           '--opt'    if 'opt' is defined;}
 	puts {           '-o -p -t' if 'opt' is undefined;}
 	puts {           '-o -p=t'  if 'opt' is undefined and '-p' need an argument;}
 	puts {}
 }
-

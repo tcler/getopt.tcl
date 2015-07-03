@@ -14,7 +14,7 @@ array set InvalidOpt {}
 set NotOptions [list]
 set OptionList {
 	f	{arg y	help {#Specify a test list file}}
-	listf	{link f}
+	listf	{arg y	help {#Same as -f}	link f}
 	cc	{arg m	help {#Notify additional e-mail address on job completion}}
 	kcov	{arg n	help {#insert kcov task for do the kernel test coverage check}}
 	kdump	{arg o	help {#insert kdump task for get core dump file if panic happen}}
