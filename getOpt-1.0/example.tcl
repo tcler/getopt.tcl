@@ -24,6 +24,7 @@ set OptionList {
 	{*3}	{Dummy {  *Options kkk3:}}
 	debugi	{hide y}
 	debugii	{hide y}
+	h	{}
 }
 
 # getUsage test

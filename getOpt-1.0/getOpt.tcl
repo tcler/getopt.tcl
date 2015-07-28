@@ -61,7 +61,10 @@ proc ::getOpt::getOpt {optionList argvVar optVar optArgVar} {
 					set option [dict get $optionList $option link]
 				}
 				set result 1
-				set argtype [dict get $optionList $option arg]
+				set argtype n
+				if [dict exists $optionList $option arg] {
+					set argtype [dict get $optionList $option arg]
+				}
 				switch -exact -- $argtype {
 					"o" {
 						if [info exists _val] {
@@ -95,7 +98,10 @@ proc ::getOpt::getOpt {optionList argvVar optVar optArgVar} {
 						if {[dict exist $optionList $x link]} {
 							set x [dict get $optionList $x link]
 						}
-						set xtype [dict get $optionList $x arg]
+						set xtype n
+						if [dict exists $optionList $x arg] {
+							set xtype [dict get $optionList $x arg]
+						}
 						switch -exact -- $xtype {
 							"n" { lappend insertArgv  --$x }
 							"o" {
@@ -151,8 +157,11 @@ proc ::getOpt::getOptions {optList argv validOptionVar invalidOptionVar notOptio
 			}
 		} elseif {$err == 1} {
 			#known options
-			set type [dict get $optList $opt arg]
-			switch -exact -- $type {
+			set argtype n
+			if [dict exists $optList $opt arg] {
+				set argtype [dict get $optList $opt arg]
+			}
+			switch -exact -- $argtype {
 				"m" {lappend validOption($opt) $optarg}
 				"n" {incr validOption($opt) 1}
 				default {set validOption($opt) $optarg}
@@ -204,14 +213,21 @@ proc ::getOpt::getUsage {optList} {
 			set keydesc [dict get $optDict $key keys]
 		}
 
-		switch -exact [dict get $optDict $key arg] {
+		set argtype n
+		if [dict exists $optDict $key arg] {
+			set argtype [dict get $optDict $key arg]
+		}
+		switch -exact $argtype {
 			"o" {set argdesc {[arg]}; set flag(o) yes}
 			"y" {set argdesc {<arg>}; set flag(y) yes}
 			"m" {set argdesc {{arg}}; set flag(m) yes}
 		}
 		set opt_length [string length "-$keydesc $argdesc"]
 
-		set keyhelp [dict get $optDict $key help]
+		set keyhelp {}
+		if [dict exists $optDict $key help] {
+			set keyhelp [dict get $optDict $key help]
+		}
 		set help_length [string length "-$keyhelp"]
 
 		# print options as GNU style:
