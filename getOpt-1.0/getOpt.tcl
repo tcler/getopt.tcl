@@ -224,7 +224,7 @@ proc ::getOpt::getUsage {optList} {
 		}
 		set opt_length [string length "-$keydesc $argdesc"]
 
-		set keyhelp {}
+		set keyhelp {nil #no help found for this options}
 		if [dict exists $optDict $key help] {
 			set keyhelp [dict get $optDict $key help]
 		}
