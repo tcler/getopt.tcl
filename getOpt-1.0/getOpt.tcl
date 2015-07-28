@@ -144,11 +144,11 @@ proc ::getOpt::getOptions {optList argv validOptionVar invalidOptionVar notOptio
 		if {$err == 3} {
 			continue
 		} elseif {$err == 2} {
-                        if {[lindex $optarg 0] == {--}} {
-                                set notOption [concat $notOption $optarg]
-                        } else {
-                                lappend notOption $optarg
-                        }
+			if {[lindex $optarg 0] == {--}} {
+				set notOption [concat $notOption $optarg]
+			} else {
+				lappend notOption $optarg
+			}
 		} elseif {$err == 1} {
 			#known options
 			set type [dict get $optList $opt arg]
@@ -182,6 +182,8 @@ proc ::getOpt::getUsage {optList} {
 				dict set optDict $lnk [concat [dict get $optDict $lnk] "keys {$lnk,$key}"]
 				dict unset optDict $key
 			}
+		} elseif [dict exist $optDict $key hide] {
+			dict unset optDict $key
 		}
 	}
 
@@ -192,7 +194,16 @@ proc ::getOpt::getUsage {optList} {
 		set pad 26
 		set keydesc $key
 		set argdesc ""
-		if [dict exist $optDict $key keys] {set keydesc [dict get $optDict $key keys]}
+
+		if [dict exist $optDict $key Dummy] {
+			puts [dict get $optDict $key Dummy]
+			continue
+		}
+
+		if [dict exist $optDict $key keys] {
+			set keydesc [dict get $optDict $key keys]
+		}
+
 		switch -exact [dict get $optDict $key arg] {
 			"o" {set argdesc {[arg]}; set flag(o) yes}
 			"y" {set argdesc {<arg>}; set flag(y) yes}
