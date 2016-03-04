@@ -12,6 +12,7 @@ namespace import ::getOpt::*
 array set Opt {}
 array set InvalidOpt {}
 set NotOptions [list]
+set ForwardOpt {}
 set OptionList {
 	{*0}	{Dummy {*Options:}}
 	{*1}	{Dummy {  *Options kkk1:}}
@@ -25,6 +26,8 @@ set OptionList {
 	debugi	{hide y}
 	debugii	{hide y}
 	h	{}
+	repo	{forward y arg m	help {Configure repo at <URL> in the kickstart for installation}}
+	recipe	{forward y arg n	help {Just generate recipeSet node, internal use for runtest -merge}}
 }
 
 # getUsage test
@@ -32,7 +35,8 @@ puts "Usage: $argv0 \[options\]"
 getUsage $OptionList
 
 # _parse_ argument
-getOptions $OptionList $::argv Opt InvalidOpt NotOptions
+getOptions $OptionList $::argv Opt InvalidOpt NotOptions ForwardOpt
 parray Opt
 parray InvalidOpt
 puts "NotOptions: $NotOptions"
+puts "ForwardOpt: $ForwardOpt"
