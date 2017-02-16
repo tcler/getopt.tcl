@@ -14,7 +14,7 @@ namespace eval ::getOpt {
 	namespace export getOptions getUsage
 }
 
-proc ::getOpt::getOpt {optionList argvVar optVar optArgVar} {
+proc ::getOpt::argparse {optionList argvVar optVar optArgVar} {
 	upvar $argvVar  argv
 	upvar $optVar option
 	upvar $optArgVar optArg
@@ -149,7 +149,7 @@ proc ::getOpt::getOptions {optList argv validOptionVar invalidOptionVar notOptio
 	set forwardOpts ""
 	#set argc [llength $nargv]
 
-	while {[set err [getOpt $optList nargv opt optarg]]} {
+	while {[set err [argparse $optList nargv opt optarg]]} {
 		if {$err == 3} {
 			continue
 		} elseif {$err == 2} {
