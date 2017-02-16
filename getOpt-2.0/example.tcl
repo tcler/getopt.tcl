@@ -17,18 +17,18 @@ set ForwardOpt {}
 set OptionList {
 	"*Options:" {}
 
-	"  *Options kkk1:" {
+	"  *Options group description1:" {
 		f	{arg y	help {#Specify a test list file}}
 		listf	{arg y	help {#Same as -f}	link f}
 		cc	{arg m	help {#Notify additional e-mail address on job completion}}
 	}
 
-	"\n  *Options kkk2:" {
+	"\n  *Options group description2:" {
 		kcov	{arg n	help {#insert kcov task for do the kernel test coverage check}}
 		kdump	{arg o	help {#insert kdump task for get core dump file if panic happen}}
 	}
 
-	"\n  *Options kkk3:" {
+	"\n  *Options group description3:" {
 		debugi	{hide y}
 		debugii	{hide y}
 		h	{}
