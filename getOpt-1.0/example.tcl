@@ -4,6 +4,7 @@
 # The next line is executed by /bin/sh, but not tcl \
 exec tclsh "$0" ${1+"$@"}
 
+lappend auto_path .
 lappend auto_path /usr/local/lib
 package require getOpt 1.0
 namespace import ::getOpt::*
