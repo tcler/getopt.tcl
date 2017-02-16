@@ -6,7 +6,7 @@ exec tclsh "$0" ${1+"$@"}
 
 lappend auto_path .
 lappend auto_path /usr/local/lib
-package require getOpt 1.0
+package require getOpt 2.0
 namespace import ::getOpt::*
 
 # global var
