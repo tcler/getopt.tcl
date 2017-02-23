@@ -21,8 +21,6 @@ Usage: ./example.tcl [options]
     --kdump [arg]              #insert kdump task for get core dump file if panic happen
 
   *Options group description3:
-    --debugi                   nil #no help found for this options
-    --debugii                  nil #no help found for this options
     -h, -H, --help             nil #no help found for this options
     --repo {arg}               Configure repo at <URL> in the kickstart for installation
     --recipe                   Just generate recipeSet node, internal use for runtest -merge
