@@ -136,7 +136,7 @@ proc ::getOpt::argparse {optionList argvVar optVar optArgVar} {
 			}
 		}
 		default {
-			set optArg $arg
+			set optArg $rarg
 			set result 2
 		}
 	}
