@@ -170,12 +170,14 @@ proc ::getOpt::getOptions {optLists argv validOptionVar invalidOptionVar notOpti
 		} elseif {$err == 1} {
 			#known options
 			set argtype n
+			lassign [getOptObj $optList $opt] _optFind optAttr
+			if [dict exists $optAttr arg] {
+				set argtype [dict get $optAttr arg]
+			}
+
 			set forward {}
 			if [dict exists $optList $opt forward] {
 				set forward y
-			}
-			if [dict exists $optList $opt arg] {
-				set argtype [dict get $optList $opt arg]
 			}
 
 			if {$forward == "y"} {
