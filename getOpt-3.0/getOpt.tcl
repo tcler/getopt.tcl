@@ -227,6 +227,13 @@ proc ::getOpt::getUsage {optLists} {
 
 	foreach {group optDict} $optLists {
 
+	#ignore hide options
+	foreach key [dict keys $optDict] {
+		if [dict exist $optDict $key hide] {
+			dict unset optDict $key
+		}
+	}
+
 	puts "$group"
 
 	#generate usage list
