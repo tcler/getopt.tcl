@@ -2,9 +2,9 @@
 #
 #  getOpt -- similar as getopt_long_only(3)
 #
-# (C) 2014 Jianhong Yin <yin-jianhong@163.com>
+# (C) 2017 Jianhong Yin <yin-jianhong@163.com>
 #
-# $Revision: 1.0 $, $Date: 2014/12/12 10:57:22 $
+# $Revision: 1.0 $, $Date: 2017/02/16 10:57:22 $
 ########################################################################
 # -*- tcl -*-
 # The next line is executed by /bin/sh, but not tcl \
