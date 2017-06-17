@@ -1,12 +1,26 @@
-# getOpt.tcl
+# Summary
 A getopt implementation in tcl that compat with GNU getopt_long_only(3) or getopt(1) -a
 
-# install
+# Why I write a new one
+I was planning to re-write a tool that use GNU style options, 
+but default tcl lib cmdline can not support --options format,
+and others that I found were not good enough for me.
+
+features in my getopt.tcl:
+1. generate usage/help info from option list.
+2. support GNU style option and more flexible: -a --along --b -c carg -d=darg -ooptionalarg -- --notoption
+2. not just support a short and a long option, you can define a *List* {h help Help ? 帮助}
+3. hide attribute of option object， used to hide some option in usage/help info
+4. option group
+4. forward option
+
+# Example code
+see here: https://github.com/tcler/getopt.tcl/blob/master/getOpt-3.0/example.tcl
+
+# Install
 Copy the dir getOpt-$version to /usr/local/lib or other specified dir.
 
-# how to use
-https://github.com/tcler/getopt.tcl/blob/master/getOpt-3.0/example.tcl
-
+# Test
 ```
 $ ./example.tcl  --help -repo xyz --debugii -cc a@r.org  -h  --abcdefg  --kcov  --cc=ff@rh.com  -repo=ftp://a.b.c/love -listf=example.tcl rawarg
 Usage: ./example.tcl [options]
