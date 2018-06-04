@@ -22,6 +22,8 @@ Copy the dir getOpt-$version to /usr/local/lib or other specified dir.
 
 # Test
 ```
+$ git clone https://github.com/tcler/getopt.tcl
+$ cd getopt.tcl/getOpt-3.0
 $ ./example.tcl  --help -repo xyz --debugii -cc a@r.org  -h  --abcdefg  --kcov  --cc=ff@rh.com  -repo=ftp://a.b.c/love -listf=example.tcl rawarg
 Usage: ./example.tcl [options]
 *Options:
@@ -62,5 +64,3 @@ ForwardOpt: --repo=xyz --repo=ftp://a.b.c/love
 
 ```
 
-https://github.com/tcler/getopt.tcl/blob/master/getOpt-2.0/example.tcl
-https://github.com/tcler/getopt.tcl/blob/master/getOpt-1.0/example.tcl
