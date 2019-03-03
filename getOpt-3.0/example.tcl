@@ -25,6 +25,7 @@ set OptionList {
 	"\n  *Options group description2:" {
 		kcov	{arg n	help {#insert kcov task for do the kernel test coverage check}}
 		kdump	{arg o	help {#insert kdump task for get core dump file if panic happen}}
+		o	{arg o	help {mount options}}
 	}
 
 	"\n  *Options group description3:" {

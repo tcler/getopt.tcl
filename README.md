@@ -24,17 +24,18 @@ Copy the dir getOpt-$version to /usr/local/lib or other specified dir.
 ```
 $ git clone https://github.com/tcler/getopt.tcl
 $ cd getopt.tcl/getOpt-3.0
-$ ./example.tcl  --help -repo xyz --debugii -cc a@r.org  -h  --abcdefg  --kcov  --cc=ff@rh.com  -repo=ftp://a.b.c/love -listf=example.tcl rawarg
+$ ./example.tcl  --help -repo xyz --debugii -cc a@r.org  -h  --abcdefg  --kcov  --cc=ff@rh.com  -repo=ftp://a.b.c/love -listf=example.tcl rawarg -oa=b -- -a -b
 Usage: ./example.tcl [options]
 *Options:
   *Options group description1:
-    -f, --file, --listf <arg> 
+    -f, --file, --listf <arg>
                                #Specify a test list file
     --cc {arg}                 #Notify additional e-mail address on job completion
 
   *Options group description2:
     --kcov                     #insert kcov task for do the kernel test coverage check
     --kdump [arg]              #insert kdump task for get core dump file if panic happen
+    -o [arg]                   mount options
 
   *Options group description3:
     -h, -H, --help             nil #no help found for this options
@@ -58,9 +59,9 @@ Opt(debugii) = 1
 Opt(f)       = example.tcl
 Opt(h)       = 2
 Opt(kcov)    = 1
+Opt(o)       = a=b
 InvalidOpt(abcdefg) = unkown options
-NotOptions: rawarg
-ForwardOpt: --repo=xyz --repo=ftp://a.b.c/love
+NotOptions: rawarg -a -b
+ForwardOpt: -repo=xyz -repo=ftp://a.b.c/love
 
 ```
-
