@@ -14,6 +14,8 @@ features in my getopt.tcl:
 4. option group
 4. forward option
 
+note: I've wrote a golang implementation https://github.com/tcler/getopt.go ; welcome to try
+
 # Example code
 see here: https://github.com/tcler/getopt.tcl/blob/master/getOpt-3.0/example.tcl
 
