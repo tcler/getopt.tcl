@@ -1,13 +1,13 @@
 # Summary
 A getopt implementation in tcl that compat with GNU getopt_long_only(3) or getopt(1) -a;
- #and also a copy in golang [getopt.go](https://github.com/tcler/getopt.go)
+ #see also a copy in golang [getopt.go](https://github.com/tcler/getopt.go)
 
 # Why I write a new one
 I was planning to re-write a tool that use GNU style options, 
 but default tcl lib cmdline can not support --options format,
 and others that I found were not good enough for me.
 
-features in my getopt.tcl:
+features in my getopt.tcl(and [getopt.go](https://github.com/tcler/getopt.go)):
 1. generate usage/help info from option list.
 2. support GNU style option and more flexible: -a --along --b -c carg -d=darg -ooptionalarg -- --notoption
 2. not just support a short and a long option, you can define a *List* {h help Help ? 帮助}
