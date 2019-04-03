@@ -1,5 +1,6 @@
 # Summary
-A getopt implementation in tcl that compat with GNU getopt_long_only(3) or getopt(1) -a
+A getopt implementation in tcl that compat with GNU getopt_long_only(3) or getopt(1) -a;
+ #and also a copy in golang [getopt.go](https://github.com/tcler/getopt.go)
 
 # Why I write a new one
 I was planning to re-write a tool that use GNU style options, 
@@ -13,8 +14,6 @@ features in my getopt.tcl:
 3. hide attribute of option object， used to hide some option in usage/help info
 4. option group
 4. forward option
-
-note: I've wrote a golang implementation https://github.com/tcler/getopt.go ; welcome to try
 
 # Example code
 see here: https://github.com/tcler/getopt.tcl/blob/master/getOpt-3.0/example.tcl
