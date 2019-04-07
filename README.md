@@ -1,6 +1,6 @@
 # Summary
 A getopt implementation in tcl that compat with GNU getopt_long_only(3) or getopt(1) -a;
- #see also a copy in golang [cmdline-go](https://github.com/tcler/cmdline-go)
+ #see also the copy in golang [cmdline-go](https://github.com/tcler/cmdline-go) and in java [cmdline-java](https://github.com/tcler/cmdline-java)
 
 # Why I write a new one
 I was planning to re-write a tool that use GNU style options, 
