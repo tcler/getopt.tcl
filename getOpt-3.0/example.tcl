@@ -39,10 +39,10 @@ set OptionList {
 
 # getUsage test
 puts "Usage: $argv0 \[options\]"
-getUsage $OptionList
+::getOpt::getUsage $OptionList
 
 # _parse_ argument
-getOptions $OptionList $::argv Opt InvalidOpt NotOptions ForwardOpt
+::getOpt::getOptions $OptionList $::argv Opt InvalidOpt NotOptions ForwardOpt
 parray Opt
 parray InvalidOpt
 puts "NotOptions: $NotOptions"
