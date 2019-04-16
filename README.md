@@ -7,7 +7,7 @@ I was planning to re-write a tool that use GNU style options,
 but default tcl lib cmdline can not support --options format,
 and others that I found were not good enough for me.
 
-features in my getopt.tcl(and [cmdline-go](https://github.com/tcler/cmdline-go)):
+features in my getopt.tcl(and [cmdline-go](https://github.com/tcler/cmdline-go) [cmdline-java](https://github.com/tcler/cmdline-java)):
 1. generate usage/help info from option list.
 2. support GNU style option and more flexible: -a --along --b -c carg -d=darg -ooptionalarg -- --notoption
 2. not just support a short and a long option, you can define a *List* {h help Help ? 帮助}
